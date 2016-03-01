@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="header_background">
+        #5184C1
+    </color>
+
+    <color name="statusbar_background">
+        #4374B5
+    </color>
+    
+    <color name="title">
+        #FFFFFF
+    </color>
+    
+    <color name="body_background">
+        #E6E6E6
+    </color>
+    
+    <color name="orange">
+        #FF9900
+    </color>
+  	<color name="green">
+  	    #009900
+  	</color>
+    <color name="blue">
+        #000099
+    </color>
+    <color name="font">
+        #000000
+    </color>
+
+    <color name="normal">
+        #DA4336
+    </color>
+
+    <color name="pressed">
+        #E75043
+    </color>
+
+    <color name="ripple">
+        #99FFFFFF
+    </color>
+
+    <color name="white">
+        #FFFFFF
+    </color>
+
+    <color name="black_semi_transparent">
+        #B2000000
+    </color>
+
+    <color name="fontColor">
+        #6D6D6D
+    </color>
+
+    <color name="start_backgroud">
+        #669CF5
+    </color>
+
+    <color name="ripple_color">
+        #4374B5
+    </color>
+
+    <color name="font_white">
+        #DFDFDF
+    </color>
+
+    <color name="font_red">
+        #FF6D29
+    </color>
+
+    <color name="font_orange">
+        #FF9701
+    </color>
+
+    <color name="font_yellow">
+        #FFED00
+    </color>
+
+    <color name="font_gray">
+        #B7C1C6
+    </color>
+
+    <color name="font_blue">
+        #37D2FF
+    </color>
+
+    <color name="font_teal">
+        #A6B9B3
+    </color>
+    
+    <color name="font_green">
+        #8FCB37
+    </color>
+
+    <color name="font_default">
+        #737373
+    </color>
+    
+</resources>

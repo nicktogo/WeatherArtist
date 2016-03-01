@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:card_view="http://schemas.android.com/apk/res-auto"
+	xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/weather_layout"
+	android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            >
+
+         <LinearLayout
+        	android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:background="@color/body_background"
+        	>
+        
+             <android.support.v7.widget.CardView
+	         	android:layout_width="match_parent"
+	        	android:layout_height="match_parent"
+	        	android:layout_margin="5dp"
+	        	card_view:cardUseCompatPadding="true"
+	        	>
+
+                 <RelativeLayout
+                     android:id="@+id/weather_info_layout"
+                     android:layout_width="match_parent"
+		        	android:layout_height="match_parent"
+		        	>
+
+                     <TextView
+                         android:id="@+id/current_county"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="Jiading"
+                         android:layout_marginTop="16dp"
+                         android:layout_marginLeft="16dp"
+                         android:textSize="40dp"
+                         android:textColor="@color/abc_primary_text_material_light" />
+
+                     <TextView
+                         android:id="@+id/current_date"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_below="@id/current_county"
+                         android:layout_alignLeft="@id/current_county"
+                         android:layout_marginTop="25dp"
+                         android:textColor="@color/font"
+                         android:textSize="18sp"
+                         android:text="6/19"
+                         />
+
+                     <TextView
+                         android:id="@+id/weather_desc"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_below="@id/current_date"
+                         android:layout_marginTop="25dp"
+                         android:textColor="@color/font"
+                         android:textSize="20sp"
+                         android:text="Partly Sunny"
+                         android:layout_alignLeft="@+id/current_county" />
+
+                     <ImageView
+                         android:id="@+id/weather_image"
+                         android:layout_width="96dp"
+                         android:layout_height="96dp"
+                         android:src="@drawable/partly_sunny"
+                         android:layout_alignParentEnd="true"
+                         android:layout_below="@id/current_county"
+                         android:layout_marginRight="32dp"
+                         />
+
+                     <TextView
+                         android:id="@+id/main_layout_current_temp"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="20"
+                         android:textSize="100sp"
+                         android:layout_marginBottom="52dp"
+                         android:layout_below="@+id/weather_desc"
+                         android:layout_alignLeft="@+id/weather_desc"
+                         android:layout_marginTop="10dp"
+                         />
+
+                     <TextView
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:text="\u2103"
+                         android:layout_toRightOf="@id/main_layout_current_temp"
+                         android:layout_alignTop="@id/main_layout_current_temp"
+                         android:layout_marginTop="20dp"
+                         android:textSize="20sp"
+                         />
+
+                     <TextView
+                         android:id="@+id/temp1"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_gravity="center_vertical"
+                         android:textColor="@color/font"
+                         android:textSize="15sp"
+                         android:text="25"
+                         android:layout_alignTop="@+id/main_layout_current_temp"
+                         android:layout_toRightOf="@+id/main_layout_current_temp"
+                         android:layout_marginLeft="60dp"
+                         android:layout_marginTop="10dp"
+                         />
+
+                     <ImageView
+                         android:layout_width="9dp"
+                         android:layout_height="14dp"
+                         android:src="@drawable/high"
+                         android:layout_alignTop="@+id/temp1"
+                         android:layout_toRightOf="@+id/main_layout_current_temp"
+                         android:layout_marginLeft="45dp"
+                         android:layout_marginTop="3dp" />
+
+                     <TextView
+                         android:id="@+id/temp2"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:textColor="@color/font"
+                         android:textSize="15sp"
+                         android:text="11"
+                         android:layout_marginLeft="60dp"
+                         android:layout_alignBottom="@+id/main_layout_current_temp"
+                         android:layout_toRightOf="@+id/main_layout_current_temp"
+                         android:layout_marginBottom="10dp" />
+
+                     <ImageView
+                         android:layout_width="9dp"
+                         android:layout_height="14dp"
+                         android:src="@drawable/low"
+                         android:layout_alignTop="@+id/temp2"
+                         android:layout_toRightOf="@+id/main_layout_current_temp"
+                         android:layout_marginLeft="45dp"
+                         android:layout_marginTop="3dp"
+                         />
+
+                     <TextView
+                         android:id="@+id/publish_text"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_alignParentEnd="true"
+                         android:layout_margin="16dp"
+                         android:textSize="18sp"
+                         android:text="12:00"
+                         android:layout_alignTop="@+id/current_county" />
+
+                     <include layout="@layout/other_info"
+                         android:id="@+id/other_info"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_below="@+id/temp1"
+                         android:layout_alignParentEnd="true" />
+
+                     <ImageView
+                         android:id="@+id/divide"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:src="@drawable/divide"
+                         android:layout_below="@id/other_info"
+                         android:layout_marginTop="20dp"
+                         android:layout_marginRight="10dp"
+                         android:layout_marginLeft="10dp"
+                         />
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="horizontal"
+                         android:layout_below="@id/divide"
+                         >
+
+
+                         <include layout="@layout/forecast"
+                             android:id="@+id/first_day"
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             />
+
+                         <include layout="@layout/forecast"
+                             android:id="@+id/second_day"
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             />
+
+                         <include layout="@layout/forecast"
+                             android:id="@+id/third_day"
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             />
+
+
+                     </LinearLayout>
+
+
+	        		</RelativeLayout>
+
+	        	</android.support.v7.widget.CardView>
+
+    		</LinearLayout>
+
+		</ScrollView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+    <com.getbase.floatingactionbutton.AddFloatingActionButton
+		android:id="@+id/switch_city"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		fab:fab_colorNormal="@color/normal"
+		android:layout_alignParentEnd="true"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginBottom="16dp"
+		android:layout_marginRight="16dp"
+		android:layout_marginEnd="16dp"
+		/>
+    
+</RelativeLayout>

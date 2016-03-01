@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:id="@+id/images1"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_01"
+                />
+
+            <ImageButton
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_02"
+                />
+
+            <ImageButton
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_03"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_04"
+                />
+
+            <ImageButton
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_05"
+                />
+
+            <ImageButton
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_06"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <ImageButton
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_07"
+                />
+
+            <ImageButton
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_08"
+                />
+
+            <ImageButton
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/allimages_09"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

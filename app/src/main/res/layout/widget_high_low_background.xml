@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:elevation="4dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA"
+        >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jiading"
+                android:id="@+id/current_county"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/background_material_dark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12:00"
+                android:id="@+id/publish_text"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+                android:textColor="@color/background_material_dark" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:id="@+id/widget_image"
+                android:src="@drawable/partly_sunny"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/current_county"
+                android:layout_alignStart="@+id/current_county" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shower"
+                android:id="@+id/weather_desc"
+                android:layout_marginLeft="16dp"
+                android:layout_alignBottom="@+id/widget_image"
+                android:layout_toEndOf="@+id/widget_image"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/background_material_dark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/temp1"
+                android:text="25\u2103"
+                android:layout_marginRight="16dp"
+                android:layout_alignBottom="@+id/widget_image"
+                android:layout_toStartOf="@+id/publish_text"
+                android:layout_marginEnd="20dp"
+                android:textSize="24sp"
+                android:textColor="@color/background_material_dark" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="125dp"
+                android:layout_alignTop="@+id/temp1"
+                android:src="@drawable/high_arrow"
+                android:layout_marginTop="3dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/temp2"
+                android:text="20\u2103"
+                android:layout_marginRight="30dp"
+                android:layout_alignTop="@+id/temp1"
+                android:layout_toStartOf="@+id/temp1"
+                android:layout_alignBottom="@+id/temp1"
+                android:textSize="24sp"
+                android:textColor="@color/background_material_dark" />
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_alignBottom="@+id/temp2"
+                android:src="@drawable/low_arrow"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="205dp"
+                android:layout_marginBottom="3dp" />
+
+        </RelativeLayout>
+
+
+</RelativeLayout>

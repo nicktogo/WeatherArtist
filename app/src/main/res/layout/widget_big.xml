@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/big_inside"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        card_view:cardUseCompatPadding="true"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jiading"
+                android:id="@+id/current_county"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:textStyle="normal"
+                android:textSize="30sp"
+                android:textIsSelectable="false" />
+
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:id="@+id/widget_image"
+                android:src="@drawable/hail"
+                android:layout_marginTop="24dp"
+                android:layout_below="@+id/wind"
+                android:layout_marginLeft="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shower"
+                android:id="@+id/weather_desc"
+                android:layout_below="@+id/current_county"
+                android:layout_alignStart="@+id/current_county"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="30dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/temp1"
+                android:text="25\u00B0"
+                android:layout_marginRight="32dp"
+                android:textSize="72sp"
+                android:layout_alignTop="@+id/widget_image"
+                android:layout_alignEnd="@+id/humidity"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wind 6km/h"
+                android:id="@+id/wind"
+                android:layout_below="@+id/current_county"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="120dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Precip 0%"
+                android:id="@+id/humidity"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignTop="@+id/wind"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>
