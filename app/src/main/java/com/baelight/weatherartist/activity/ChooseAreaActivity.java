@@ -30,6 +30,8 @@ import com.baelight.weatherartist.util.Utility;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.bmob.v3.Bmob;
+
 public class ChooseAreaActivity extends Activity {
     
     //当前是在哪个ListView下（省市县）
@@ -68,6 +70,8 @@ public class ChooseAreaActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
+        Bmob.initialize(this, getString(R.string.bmob_application_id));
+
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         is_from_weather_activity = getIntent().getBooleanExtra("from_weather_activity", false);
         

@@ -13,4 +13,6 @@
     <string name="title_activity_create_widget">CreateWidgetActivity</string>
     <string name="title_activity_start">StartActivity</string>
 
+    <string name="bmob_application_id">ebe50aa8bf0d646c56a0c2dd612e1ff2</string>
+
 </resources>
