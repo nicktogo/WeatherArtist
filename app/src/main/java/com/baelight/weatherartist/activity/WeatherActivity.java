@@ -1,15 +1,19 @@
 package com.baelight.weatherartist.activity;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
@@ -61,14 +65,14 @@ public class WeatherActivity extends AppCompatActivity {
     private ListView leftDrawerList;
     private ArrayAdapter<String> navigationDrawerListAdapter;
     private String[] leftSlideData = {"Weather", "Artist", "About"};
+
+    private static final int REQUEST_CODE = 1;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_for_weather_activity_with_fragment);
-
-//        BmobUpdateAgent.initAppVersion(this);
         BmobUpdateAgent.setUpdateListener(new BmobUpdateListener() {
             @Override
             public void onUpdateReturned(int updateStatus, UpdateResponse updateResponse) {
@@ -82,7 +86,7 @@ public class WeatherActivity extends AppCompatActivity {
                 }
             }
         });
-        BmobUpdateAgent.update(MyApplication.getContext());
+        queryUpdate();
 
         initView();
         setSupportActionBar(toolbar);
@@ -148,6 +152,40 @@ public class WeatherActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    queryUpdate();
+                }
+                break;
+        }
+    }
+
+    private boolean isPermissionGranted() {
+        List<String> permissions = new ArrayList<>();
+        if (ContextCompat.checkSelfPermission(MyApplication.getContext(),
+                Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_NETWORK_STATE);
+        }
+        if (ContextCompat.checkSelfPermission(MyApplication.getContext(),
+                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+        if (!permissions.isEmpty()) {
+            String[] permissionsStr = new String[]{};
+            ActivityCompat.requestPermissions(this, permissions.toArray(permissionsStr), REQUEST_CODE);
+            return false;
+        }
+        return true;
+    }
+
+    private void queryUpdate() {
+        if (!isPermissionGranted())
+            return;
+        BmobUpdateAgent.update(MyApplication.getContext());
+    }
 
     private void initView() {
 
