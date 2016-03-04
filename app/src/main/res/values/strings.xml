@@ -15,4 +15,12 @@
 
     <string name="bmob_application_id">ebe50aa8bf0d646c56a0c2dd612e1ff2</string>
 
+    <string name="new_update">有新版本！</string>
+    <string name="new_update_msg">update msg</string>
+    <string name="new_update_url">update url</string>
+    <string name="apk_name">WeatherArtist.apk</string>
+    <string name="update_now">现在更新</string>
+    <string name="update_later">以后再说</string>
+    <string name="no_update">已经是最新版本了</string>
+
 </resources>

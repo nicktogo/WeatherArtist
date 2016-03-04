@@ -1,34 +1,66 @@
 package com.baelight.weatherartist.fragment;
 
-import android.app.Fragment;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.app.DialogFragment;
+import android.app.AlertDialog;
+import android.text.TextUtils;
+
+import com.baelight.weatherartist.MyApplication;
 import com.baelight.weatherartist.R;
+import com.baelight.weatherartist.service.AppUpdateService;
 
 /**
  * update
  */
-public class UpdateFragment extends Fragment {
-    // TODO: Rename and change types and number of parameters
-    public static UpdateFragment newInstance(String param1, String param2) {
-        UpdateFragment fragment = new UpdateFragment();
-        return fragment;
+public class UpdateFragment extends DialogFragment {
+
+    private String apkUrl;
+    private String updateMsg;
+
+    private DialogInterface.OnClickListener buttonClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    // download apk
+                    if (!TextUtils.isEmpty(apkUrl)) {
+                        Intent intent = new Intent(MyApplication.getContext(), AppUpdateService.class);
+                        intent.putExtra(getString(R.string.new_update_url), apkUrl);
+                        MyApplication.getContext().startService(intent);
+                    }
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    break;
+            }
+        }
+    };
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getArguments();
+        apkUrl = bundle.getString(getString(R.string.new_update_url), "");
+        updateMsg = bundle.getString(getString(R.string.new_update_msg), "");
     }
 
-    public UpdateFragment() {
-        // Required empty public constructor
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MyApplication.getContext());
+        builder.setTitle(R.string.new_update)
+                .setMessage(updateMsg)
+                .setPositiveButton(R.string.update_now, buttonClickListener)
+                .setNegativeButton(R.string.update_later, buttonClickListener);
+        return builder.create();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-
-
-        return inflater.inflate(R.layout.fragment_update, container, false);
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
     }
 }

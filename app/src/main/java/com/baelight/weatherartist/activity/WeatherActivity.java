@@ -30,6 +30,7 @@ import com.baelight.weatherartist.R;
 import com.baelight.weatherartist.db.WeatherArtistDB;
 import com.baelight.weatherartist.fragment.AboutFragement;
 import com.baelight.weatherartist.fragment.ChooseWidgetFragment;
+import com.baelight.weatherartist.fragment.UpdateFragment;
 import com.baelight.weatherartist.fragment.WeatherFragment;
 import com.baelight.weatherartist.fragment.WeatherPagerAdapter;
 import com.baelight.weatherartist.model.County;
@@ -38,6 +39,11 @@ import com.baelight.weatherartist.util.HttpUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.bmob.v3.listener.BmobUpdateListener;
+import cn.bmob.v3.update.BmobUpdateAgent;
+import cn.bmob.v3.update.UpdateResponse;
+import cn.bmob.v3.update.UpdateStatus;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -61,6 +67,22 @@ public class WeatherActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_for_weather_activity_with_fragment);
+
+//        BmobUpdateAgent.initAppVersion(this);
+        BmobUpdateAgent.setUpdateListener(new BmobUpdateListener() {
+            @Override
+            public void onUpdateReturned(int updateStatus, UpdateResponse updateResponse) {
+                if (updateStatus == UpdateStatus.Yes) {
+                    android.app.DialogFragment updateFragment = new UpdateFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString(getString(R.string.new_update_url), updateResponse.path);
+                    bundle.putString(getString(R.string.new_update_msg), updateResponse.updateLog);
+                    updateFragment.setArguments(bundle);
+                    updateFragment.show(getFragmentManager(), "");
+                }
+            }
+        });
+        BmobUpdateAgent.update(MyApplication.getContext());
 
         initView();
         setSupportActionBar(toolbar);
