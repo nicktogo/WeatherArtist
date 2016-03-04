@@ -24,24 +24,10 @@ public class AboutFragement extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                     }
                 })
-//                .setNeutralButton("Buy me a zongzi", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onclick(dialoginterface dialog, int which) {
-//                        Intent intent = new Intent(Intent.ACTION_SEND);
-//                        intent.setType("message/rfc822");
-//                        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"findnick@163.com"});
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        try{
-//                            getActivity().startActivity(Intent.createChooser(intent,"Send..."));
-//                        } catch (android.content.ActivityNotFoundException e){
-//
-//                        }
-//                    }
-//                })
                 .setNeutralButton("Check Update", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        ((WeatherActivity)getActivity()).checkUpdate();
+                        ((WeatherActivity)getActivity()).queryUpdate();
                     }
                 })
                 .setCancelable(false);

@@ -169,7 +169,7 @@ public class WeatherActivity extends AppCompatActivity {
         return true;
     }
 
-    private void queryUpdate() {
+    public void queryUpdate() {
         if (!isPermissionGranted())
             return;
         ApkUpdateAgent.update(this);
@@ -306,37 +306,6 @@ public class WeatherActivity extends AppCompatActivity {
         if(findViewById(R.id.choose_widget) == null){
             toolbar.setTitle(getResources().getString(R.string.app_name).substring(0,7));
         }
-    }
-
-    //check for update
-    public void checkUpdate(){
-        //show a progressdialog
-
-        ProgressDialog checkingDialog = new ProgressDialog(WeatherActivity.this);
-        checkingDialog.setMessage("Checking...");
-        checkingDialog.show();
-
-        String url = null;
-
-        HttpUtil.sendHttpRequest(url, new HttpCallbackListener() {
-            @Override
-            public void onFinish(String response) {
-                //解析返回的xml
-            }
-
-            @Override
-            public void onError(Exception e) {
-
-            }
-        });
-
-        //get xml data from server by AsyncTask
-
-        //new version pop up decide dialog
-
-        //no pop up a snackbar
-
-
     }
 }
 
