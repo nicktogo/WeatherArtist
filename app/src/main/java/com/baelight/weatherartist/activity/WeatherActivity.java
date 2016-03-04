@@ -77,6 +77,7 @@ public class WeatherActivity extends AppCompatActivity {
             @Override
             public void onUpdateReturned(int updateStatus, UpdateResponse updateResponse) {
                 if (updateStatus == UpdateStatus.Yes) {
+                    Log.i("UPDATE", "有更新~");
                     android.app.DialogFragment updateFragment = new UpdateFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString(getString(R.string.new_update_url), updateResponse.path);
@@ -184,7 +185,7 @@ public class WeatherActivity extends AppCompatActivity {
     private void queryUpdate() {
         if (!isPermissionGranted())
             return;
-        BmobUpdateAgent.update(MyApplication.getContext());
+        BmobUpdateAgent.update(this);
     }
 
     private void initView() {

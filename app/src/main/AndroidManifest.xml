@@ -36,6 +36,7 @@
         </activity>
 
         <service android:name=".service.AutoUpdateService"/>
+        <service android:name=".service.AppUpdateService"/>
 
         <receiver android:name=".receiver.AutoUpdateReceiver"/>
         <receiver android:name=".widget.WeatherWidgetProvider">
@@ -47,11 +48,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_provider" />
         </receiver>
-
-        <service
-            android:name=".service.AppUpdateService"
-            android:enabled="false"
-            android:exported="false"/>
     </application>
 
 </manifest>

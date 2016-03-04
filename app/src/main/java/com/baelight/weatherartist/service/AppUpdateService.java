@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.IBinder;
+import android.util.Log;
 
 import com.baelight.weatherartist.R;
 
@@ -30,13 +31,19 @@ public class AppUpdateService extends Service {
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Uri uri = Uri.parse(intent.getStringExtra(getString(R.string.new_update_url)));
-        DownloadManager.Request request = new DownloadManager.Request(uri);
-        request.setTitle(getString(R.string.app_name))
-                .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, getString(R.string.apk_name));
-        final DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-        apkDownloadId = downloadManager.enqueue(request);
+    public int onStartCommand(final Intent intent, int flags, int startId) {
+        Log.i("Update", "onStartCommand");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Uri uri = Uri.parse(intent.getStringExtra(getString(R.string.new_update_url)));
+                DownloadManager.Request request = new DownloadManager.Request(uri);
+                request.setTitle(getString(R.string.app_name))
+                        .setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, getString(R.string.apk_name));
+                DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                apkDownloadId = downloadManager.enqueue(request);
+            }
+        }).start();
 
         IntentFilter filter = new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE);
         receiverDownloadCompleted = new BroadcastReceiver() {
@@ -46,6 +53,7 @@ public class AppUpdateService extends Service {
                 if (apkDownloadId == downloadId) {
                     DownloadManager.Query query = new DownloadManager.Query();
                     query.setFilterById(apkDownloadId);
+                    DownloadManager downloadManager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                     Cursor cursor = downloadManager.query(query);
                     if (cursor.moveToFirst()) {
                         int fileStatusIdx = cursor.getColumnIndex(DownloadManager.COLUMN_STATUS);
@@ -57,6 +65,7 @@ public class AppUpdateService extends Service {
                             installApk.setDataAndType(Uri.fromFile(new File(fileName)), "application/vnd.android.package-archive");
                             installApk.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             context.startActivity(installApk);
+                            unregisterReceiver(receiverDownloadCompleted);
                             stopSelf();
                         }
                     }
