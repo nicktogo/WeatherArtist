@@ -38,6 +38,7 @@ import com.baelight.weatherartist.fragment.UpdateFragment;
 import com.baelight.weatherartist.fragment.WeatherFragment;
 import com.baelight.weatherartist.fragment.WeatherPagerAdapter;
 import com.baelight.weatherartist.model.County;
+import com.baelight.weatherartist.util.ApkUpdateAgent;
 import com.baelight.weatherartist.util.HttpCallbackListener;
 import com.baelight.weatherartist.util.HttpUtil;
 
@@ -73,20 +74,6 @@ public class WeatherActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_for_weather_activity_with_fragment);
-        BmobUpdateAgent.setUpdateListener(new BmobUpdateListener() {
-            @Override
-            public void onUpdateReturned(int updateStatus, UpdateResponse updateResponse) {
-                if (updateStatus == UpdateStatus.Yes) {
-                    Log.i("UPDATE", "有更新~");
-                    android.app.DialogFragment updateFragment = new UpdateFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString(getString(R.string.new_update_url), updateResponse.path);
-                    bundle.putString(getString(R.string.new_update_msg), updateResponse.updateLog);
-                    updateFragment.setArguments(bundle);
-                    updateFragment.show(getFragmentManager(), "");
-                }
-            }
-        });
         queryUpdate();
 
         initView();
@@ -185,7 +172,7 @@ public class WeatherActivity extends AppCompatActivity {
     private void queryUpdate() {
         if (!isPermissionGranted())
             return;
-        BmobUpdateAgent.update(this);
+        ApkUpdateAgent.update(this);
     }
 
     private void initView() {
