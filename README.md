@@ -11,3 +11,6 @@
 ![省/区级列表](https://raw.githubusercontent.com/nicktogo/WeatherArtist/master/screenshots/province_list.png)
 ![市级列表](https://raw.githubusercontent.com/nicktogo/WeatherArtist/master/screenshots/country_list.png)
 ![县级列表](https://raw.githubusercontent.com/nicktogo/WeatherArtist/master/screenshots/county_list.png)
+
+## LICENSE
+MIT
