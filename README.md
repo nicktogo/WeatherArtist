@@ -1,8 +1,8 @@
 # WeatherArtist
-+ [设计图](https://github.com/nicktogo/WeatherArtist/blob/master/design.pdf)
++ [Design](https://github.com/nicktogo/WeatherArtist/blob/master/design.pdf)
 + [DEMO](http://pan.baidu.com/s/1nt7TrOt)
 
-## 一个简单的天气应用，实现部分 Material Design 特性
+## Simple Weather App for China
 + Material Theme
 + FAB
 + Ripple
